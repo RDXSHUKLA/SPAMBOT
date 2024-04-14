@@ -1,0 +1,5 @@
+build:
+  docker:
+    Roy: Dockerfile
+run:
+  Roy: python3 -m main.py

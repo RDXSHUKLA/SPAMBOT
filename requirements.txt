@@ -1,0 +1,5 @@
+telethon
+cryptg
+heroku3
+pyrogram
+tgcrypto
