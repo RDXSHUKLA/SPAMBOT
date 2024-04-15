@@ -111,8 +111,8 @@ async def dhraid(e):
             await e.reply(f"❖ 𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 ⏤͟͟͞͞★\n\n● 𝐃𝐇𝐢𝐧𝐝𝐢 𝐑𝐞𝐩𝐥𝐲𝐑𝐚𝐢𝐝 ➥ {hl}dhraid <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n● {hl}dhraid <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
 
 
-@X1.on(events.NewMessage(incoming=True, pattern=r"\%sabuse(?: |$)(.*)" % hl))
-async def abuse(e):
+@X1.on(events.NewMessage(incoming=True, pattern=r"\%sbspam(?: |$)(.*)" % hl))
+async def bspam(e):
     if e.sender_id == enums.ChatMemberStatus.ADMINISTRATOR or enums.ChatMemberStatus.OWNER:
         xraid = e.text.split(" ", 2)
 
@@ -130,7 +130,7 @@ async def abuse(e):
             counter = int(xraid[1])
             username = f"[{first_name}](tg://user?id={uid})"
             for _ in range(counter):
-                reply = choice(ABUSE)
+                reply = choice(BDAY)
                 caption = f"❖ {username} {reply}"
                 await e.client.send_message(e.chat_id, caption)
                 await asyncio.sleep(0.1)
