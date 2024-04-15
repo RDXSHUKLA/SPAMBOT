@@ -135,7 +135,7 @@ async def bspam(e):
                 await e.client.send_message(e.chat_id, caption)
                 await asyncio.sleep(0.1)
         except (IndexError, ValueError, NameError):
-            await e.reply(f"❖ 𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 ⏤͟͟͞͞★\n\n● 𝐀𝐛𝐮𝐬𝐞 𝐁𝐢𝐠 𝐆𝐚𝐚𝐥𝐢 ➥ {hl}abuse <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n● {hl}abuse <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            await e.reply(f"❖ 𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 ⏤͟͟͞͞★\n\n● 𝐁𝐢𝐫𝐭𝐡𝐝𝐚𝐲 𝐒𝐩𝐚𝐦 𝐰𝐢𝐬𝐡𝐞𝐬 ➥ {hl}bspam <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n● {hl}bspam <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
             print(e)
 
@@ -169,8 +169,8 @@ async def emoji(e):
             print(e)
 
 
-@X1.on(events.NewMessage(incoming=True, pattern=r"\%sbspam(?: |$)(.*)" % hl))
-async def bspam(e):
+@X1.on(events.NewMessage(incoming=True, pattern=r"\%sabuse(?: |$)(.*)" % hl))
+async def abuse(e):
     if e.sender_id == enums.ChatMemberStatus.ADMINISTRATOR or enums.ChatMemberStatus.OWNER:
         xraid = e.text.split(" ", 2)
 
@@ -195,12 +195,12 @@ async def bspam(e):
                 counter = int(xraid[1])
                 username = f"[{first_name}](tg://user?id={uid})"
                 for _ in range(counter):
-                    reply = choice(BDAY)
+                    reply = choice(ABUSE)
                     caption = f"❖ {username} {reply}"
                     await e.client.send_message(e.chat_id, caption)
                     await asyncio.sleep(0.1)
         except (IndexError, ValueError, NameError):
-            await e.reply(f"❖ 𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 ⏤͟͟͞͞★\n\n● 𝐁𝐢𝐫𝐭𝐡𝐝𝐚𝐲 𝐒𝐩𝐚𝐦 𝐰𝐢𝐬𝐡𝐞𝐬 ➥ {hl}bspam <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n● {hl}bspam <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            await e.reply(f"❖ 𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 ⏤͟͟͞͞★\n\n● 𝐁𝐢𝐠 𝐆𝐚𝐚𝐥𝐢 𝐒𝐩𝐚𝐦 ➥ {hl}abuse <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n● {hl}abuse <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
             print(e)
 
