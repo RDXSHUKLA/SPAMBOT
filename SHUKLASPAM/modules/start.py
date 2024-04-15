@@ -6,14 +6,14 @@ from config import X1
 
 START_BUTTON = [
     [
+        Button.url("𝗔𝗗𝗗 𝗠𝗘 𝗕𝗔𝗕𝗬", "https://t.me/StrangerSpamProBot?startgroup=true")
+    ],
+    [
+        Button.url("𝗦𝗨𝗣𝗣𝗢𝗥𝗧", "https://t.me/MASTIWITHFRIENDSXD"),
+        Button.url("𝗨𝗣𝗗𝗔𝗧𝗘𝗦", "https://t.me/SHIVANSH474")
+    ],
+    [
         Button.inline("𝗛𝗘𝗟𝗣 𝗔𝗡𝗗 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦", data="help_back")
-    ],
-    [
-        Button.url("𝗨𝗣𝗗𝗔𝗧𝗘𝗦", "https://t.me/SHIVANSH474"),
-        Button.url("𝗦𝗨𝗣𝗣𝗢𝗥𝗧", "https://t.me/mastiwithfriendsxd")
-    ],
-    [
-        Button.url("𝗦𝗛𝗜𝗩𝗔𝗡𝗦𝗛", "https://t.me/SHIVANSHDEVS")   
     ]
 ]
 
