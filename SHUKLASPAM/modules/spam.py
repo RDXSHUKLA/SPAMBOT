@@ -12,7 +12,7 @@ async def gifspam(e, smex):
         await e.client(
             functions.messages.SaveGifRequest(
                 id=types.InputDocument(
-                    id=smex.media.document.id,
+                    id=sandy.media.document.id,
                     access_hash=smex.media.document.access_hash,
                     file_reference=smex.media.document.file_reference,
                 ),
@@ -21,14 +21,11 @@ async def gifspam(e, smex):
         )
     except Exception:
         pass
-        
-async def is_admin_or_owner(event):
-    participant = await event.client.get_participant(event.chat_id, event.sender_id)
-    return participant.status in (enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER)
+
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sspam(?: |$)(.*)" % hl))
-async def spam(event):
-    if await is_admin_or_owner(event):
+async def spam(event: events):
+    if event.sender_id == enums.ChatMemberStatus.ADMINISTRATOR or enums.ChatMemberStatus.OWNER:
         altron = event.text.split(" ", 2)
         mk = await event.get_reply_message()
 
@@ -95,4 +92,3 @@ async def hang(e):
                 await e.reply(f"❖ **ᴜsᴀɢᴇ ➥** {hl}hang 10")
             except Exception as e:
                 print(e)
-             
