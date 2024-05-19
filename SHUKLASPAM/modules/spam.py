@@ -60,21 +60,33 @@ async def spam(event):
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%spspam(?: |$)(.*)" % hl))
 async def pspam(event):
-    if event.sender_id == enums.ChatMemberStatus.ADMINISTRATOR or enums.ChatMemberStatus.OWNER:
-        if event.chat_id in GROUP:
-            await event.reply("» ꜱᴏʀʀʏ, ᴛʜɪꜱ ɪꜱ ™°‌𝐒 𝐓 𝐑 𝐀 𝐍 𝐆 𝐄 𝐑 ᴘʀᴏᴛᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘ.")
-        else:
-            try:
-                counter = int(event.text.split(" ", 2)[1])
-                porrn = choice(PORMS)
-                for _ in range(counter):
-                    alt = await event.client.send_file(event.chat_id, porrn)
-                    await gifspam(event, alt) 
-                    await asyncio.sleep(0.2)
-            except (IndexError, ValueError):
-                await event.reply(f"❖ **ᴜsᴀɢᴇ ➥**  {hl}pspam 13")
-            except Exception as e:
-                print(e)
+    # Fetching the participant's status in the chat
+    result = await event.client(functions.channels.GetParticipantRequest(
+        channel=event.chat_id,
+        user_id=event.sender_id
+    ))
+    
+    participant = result.participant
+    if not isinstance(participant, (types.ChannelParticipantAdmin, types.ChannelParticipantCreator)):
+        await event.reply("You don't have the necessary permissions to use this command.")
+        return
+
+    if event.chat_id in GROUP:
+        await event.reply("» ꜱᴏʀʀʏ, ᴛʜɪꜱ ɪꜱ ™°‌𝐒 𝐓 𝐑 𝐀 𝐍 𝐆 𝐄 𝐑 ᴘʀᴏᴛᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘ.")
+        return
+    
+    try:
+        counter = int(event.text.split(" ", 2)[1])
+        porrn = choice(PORMS)
+        for _ in range(counter):
+            alt = await event.client.send_file(event.chat_id, porrn)
+            await gifspam(event, alt) 
+            await asyncio.sleep(0.2)
+    except (IndexError, ValueError):
+        await event.reply(f"❖ **ᴜsᴀɢᴇ ➥**  {hl}pspam 13")
+    except Exception as e:
+        print(e)
+
 
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%shang(?: |$)(.*)" % hl))
