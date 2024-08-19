@@ -2,7 +2,7 @@ import sys
 import glob
 import asyncio
 import logging
-import importlib
+import importlib.util
 import urllib3
 from pathlib import Path
 from config import X1
@@ -20,21 +20,17 @@ def load_plugins(plugin_name):
     sys.modules["SHUKLASPAM.modules." + plugin_name] = load
     print("♥︎ shuklaspam has Imported " + plugin_name)
 
-
 files = glob.glob("SHUKLASPAM/modules/*.py")
 for name in files:
     with open(name) as a:
         patt = Path(a.name)
         plugin_name = patt.stem
-        load_plugins(plugin_name.replace(".py", ""))
-        
+        load_plugins(plugin_name)
 
 print("♥︎Shukla spam Bot Deployed Successfully.")
 
-
 async def main():
     await X1.run_until_disconnected()
-
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
